@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import Image from '../assets/register-img.jpg';
-import Container from '../components/Container';
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import Image from "../assets/register-img.jpg";
+import Container from "../components/Container";
+import useLogin from "../hooks/useLogin";
+
 export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    setError,
+    formState: { errors, isSubmitting },
   } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log(errors);
+  const { onSubmit } = useLogin(setError);
 
   return (
     <Container>
@@ -22,15 +24,24 @@ export default function Register() {
           >
             <div className=" flex flex-col w-full">
               <label htmlFor="email">البريد الإلكترونى</label>
-
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register('Email-Address', { required: true })}
+                {...register("email", {
+                  required: "يرجى إدخال البريد الإلكتروني",
+                  pattern: {
+                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                    message: "Invalid email",
+                  },
+                })}
                 id="email"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
+              {errors.email && (
+                <div className="text-red-500">{errors.email.message}</div>
+              )}
             </div>
+
             <div className=" flex flex-col w-full">
               <div className="flex items-center justify-between">
                 <label htmlFor="password">كلمة المرور</label>
@@ -43,10 +54,23 @@ export default function Register() {
               </div>
               <input
                 type="password"
-                {...register('password', { required: true, min: 8 })}
+                {...register("password", {
+                  required: "يرجى إدخال كلمة المرور",
+                  minLength: {
+                    value: 8,
+                    message: "كلمة المرور يجب ألا تقل عن 8",
+                  },
+                  maxLength: {
+                    value: 16,
+                    message: "كلمة المرور يجب ألا تزيد عن 16",
+                  },
+                })}
                 id="password"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
+              {errors.password && (
+                <div className="text-red-500">{errors.password.message}</div>
+              )}
             </div>
 
             <div>
@@ -57,14 +81,20 @@ export default function Register() {
                 </Link>
               </p>
             </div>
+
+            {errors.root && (
+              <div className="text-red-500">{errors.root.message}</div>
+            )}
             <button
               type="submit"
               className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              disabled={isSubmitting}
             >
-              تسجيل الدخول
+              {isSubmitting ? "loading..." : "تسجيل دخول"}
             </button>
           </form>
         </div>
+
         <div className="lg:flex items-center justify-center hidden  rounded-lg overflow-hidden flex-1  max-h-[637px] ">
           <img
             src={Image}
