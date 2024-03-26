@@ -15,7 +15,7 @@ const Home = () => {
           <h1 className="lg:text-7xl md:text-right md:text-6xl p-2 text-4xl font-black text-center">
             منصة <span className="text-[#00c2cd]">عضد </span> للتطوع في العالم العربي
           </h1>
-          <button className="bg-neutral-200 md:ml-auto text-[#003478] font-extrabold text-xl  rounded-md mt-5 py-4 px-16 ">
+          <button className="bg-neutral-200 md:ml-auto text-[#003478] font-extrabold text-xl  rounded-md mt-10 py-4 px-16 ">
             <Link to="vol">كن متطوعًا</Link>
           </button>
         </div>

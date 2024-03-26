@@ -35,7 +35,7 @@ export default function Register() {
                   },
                 })}
                 id="email"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.email && <div className="text-red-500">{errors.email.message}</div>}
             </div>
@@ -43,7 +43,7 @@ export default function Register() {
             <div className=" flex flex-col w-full">
               <div className="flex items-center justify-between">
                 <label htmlFor="password">كلمة المرور</label>
-                <Link to="/forgot-password" className="text-indigo-700 underline">
+                <Link to="/forgot-password" className="text-[#00c2cd] underline">
                   هل نسيت كلمة السر؟
                 </Link>
               </div>
@@ -61,7 +61,7 @@ export default function Register() {
                   },
                 })}
                 id="password"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.password && <div className="text-red-500">{errors.password.message}</div>}
             </div>
@@ -69,7 +69,7 @@ export default function Register() {
             <div>
               <p>
                 ليس لديك حساب؟
-                <Link to="/register" className="pr-2 text-indigo-700 underline">
+                <Link to="/register" className="pr-2 text-[#00c2cd] underline">
                   إنشاء حساب
                 </Link>
               </p>
@@ -78,7 +78,7 @@ export default function Register() {
             {errors.root && <div className="text-red-500">{errors.root.message}</div>}
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl text-white hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'loading...' : 'تسجيل دخول'}

@@ -8,7 +8,7 @@ const Checkout = () => {
   };
   return (
     <Container>
-      <div className="h-dvh  flex items-center justify-center">
+      <div className="h-dvh flex items-center justify-center">
         <div className="md:p-5 md:shadow-2xl md:max-w-md flex flex-col w-full max-w-sm">
           <h1 className="mb-4 text-4xl font-bold">إدخال الرمز المؤلف من 6 أرقام</h1>
           <form className=" pt-5 space-y-5" onSubmit={(e) => handleSubmit(e)}>
@@ -18,21 +18,21 @@ const Checkout = () => {
                 placeholder="رمز من 6 أرقام"
                 id="checkout"
                 name="checkout"
-                className="bg-[#111827]  rounded-lg outline-none  p-3"
+                className=" p-3 rounded-lg outline-none"
               />
             </div>
-            <div className="decoration-white text-lg font-semibold text-indigo-800 underline cursor-pointer">
+            <div className="decoration-white text-lg font-semibold text-[#00c2cd] underline cursor-pointer">
               إعادة إرسال الرمز
             </div>
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl hover:bg-[#003478] text-white  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
             >
               <Link to="/reset-password">إرسال</Link>
             </button>
             <button
               type="submit"
-              className="rounded-3xl hover:bg-gray-700 w-full py-3 text-lg font-semibold"
+              className="rounded-3xl hover:bg-gray-700 w-full py-3 text-lg font-semibold text-white bg-gray-500"
             >
               <Link to="/login">الرجوع</Link>
             </button>

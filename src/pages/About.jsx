@@ -2,7 +2,7 @@ import React from 'react';
 import Image from '../assets/about-img.jpg';
 const About = () => {
   return (
-    <div id="about" className="container flex gap-4 my-20">
+    <div id="about" className="container flex items-center gap-4 my-20">
       <div className="flex-1">
         <h3 className="py-3 text-xl font-bold">
           من نحن: نسد الفجوة في العالم العربي من خلال التطوع

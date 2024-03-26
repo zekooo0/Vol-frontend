@@ -32,7 +32,7 @@ export default function Signup() {
                     required: 'يرجى إدخال الإسم الأول',
                   })}
                   id="fName"
-                  className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
+                  className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
                 />
                 {errors.firstName && <div className="text-red-500">{errors.firstName.message}</div>}
               </div>
@@ -45,7 +45,7 @@ export default function Signup() {
                     required: 'يرجى إدخال الإسم الأخير',
                   })}
                   id="lName"
-                  className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
+                  className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
                 />
                 {errors.lastName && <div className="text-red-500">{errors.lastName?.message}</div>}
               </div>
@@ -57,7 +57,7 @@ export default function Signup() {
                 type="tel"
                 {...register('mobile', { required: 'يرجى إدخال رقم الموبايل' })}
                 id="phoneNumber"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.mobile && <div className="text-red-500">{errors.mobile.message}</div>}
             </div>
@@ -75,7 +75,7 @@ export default function Signup() {
                   },
                 })}
                 id="email"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.email && <div className="text-red-500">{errors.email.message}</div>}
             </div>
@@ -96,7 +96,7 @@ export default function Signup() {
                   },
                 })}
                 id="password"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.password && <div className="text-red-500">{errors.password.message}</div>}
             </div>
@@ -117,7 +117,7 @@ export default function Signup() {
                   },
                 })}
                 id="cPassword"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.confirmPassword && (
                 <div className="text-red-500">{errors.confirmPassword.message}</div>
@@ -127,7 +127,7 @@ export default function Signup() {
             <div>
               <p>
                 لديك حساب بالفعل ؟
-                <Link to="/login" className="pr-2 text-indigo-700 underline">
+                <Link to="/login" className="pr-2 text-[#00c2cd] underline">
                   سجل الدخول
                 </Link>
               </p>
@@ -136,7 +136,7 @@ export default function Signup() {
             {errors.root && <div className="text-red-500">{errors.root.message}</div>}
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd] text-white"
             >
               {isSubmitting ? 'loading...' : 'إنشاء حساب'}
             </button>

@@ -19,7 +19,7 @@ const ForgotPassword = () => {
                 placeholder="example@example.com"
                 id="email"
                 name="email"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 mt-2 px-2 py-4"
+                className=" rounded-xl focus:border-indigo-950 px-2 py-4 mt-2 border border-gray-800 outline-none"
               />
             </div>
             <p>
@@ -27,15 +27,12 @@ const ForgotPassword = () => {
             </p>
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl hover:bg-[#003478] text-white  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
             >
               <Link to="/checkout">التالى</Link>
             </button>
           </form>
-          <button
-            type="submit"
-            className="rounded-3xl hover:bg-gray-600 w-full py-3 my-5 text-lg font-semibold"
-          >
+          <button className="rounded-3xl hover:bg-gray-600 w-full py-3 my-5 text-lg font-semibold text-white bg-gray-500">
             <Link to="/login">رجوع</Link>
           </button>
         </div>

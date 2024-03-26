@@ -43,11 +43,13 @@ const router = createBrowserRouter([
 // className="font-poppins text-base bg-[#111827]  text-neutral-200 min-h-screen container"
 const App = () => {
   return (
-    <SmoothScroll>
-      <AuthProvider store={store}>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </SmoothScroll>
+    <div className="font-cairo">
+      <SmoothScroll>
+        <AuthProvider store={store}>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </SmoothScroll>
+    </div>
   );
 };
 
