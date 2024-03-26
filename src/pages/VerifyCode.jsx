@@ -1,11 +1,23 @@
-import React from 'react';
-import Container from '../components/Container';
-import { Link } from 'react-router-dom';
+import React from "react";
+import Container from "../components/Container";
+import { Link, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import useVerifyCode from "../hooks/useVerifyCode";
+import { zodResolver } from "@hookform/resolvers/zod";
+import verifyCodeSchema from "../shema/verifyCodeSchema";
 
-const Checkout = () => {
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
+const VerifyCode = () => {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(verifyCodeSchema),
+  });
+  const { email } = useParams();
+  const { onSubmit, resendCode } = useVerifyCode(setError, email);
+
   return (
     <Container>
       <div className=" md:pt-40 flex items-center justify-center h-full pt-20">
@@ -13,17 +25,27 @@ const Checkout = () => {
           <h1 className="mb-4 text-4xl font-bold">
             إدخال الرمز المؤلف من 6 أرقام
           </h1>
-          <form className=" pt-5 space-y-5" onSubmit={e => handleSubmit(e)}>
+          <form className=" pt-5 space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col justify-start px-1 border border-gray-800 rounded-md">
               <input
                 type="number"
                 placeholder="رمز من 6 أرقام"
-                id="checkout"
-                name="checkout"
+                {...register("code")}
+                id="code"
                 className="bg-[#111827]  rounded-lg outline-none  p-3"
               />
             </div>
-            <div className="decoration-white text-lg font-semibold text-indigo-800 underline cursor-pointer">
+            {errors.code && (
+              <div className="text-red-500">{errors.code.message}</div>
+            )}
+            {errors.root && (
+              <div className="text-red-500">{errors.root.message}</div>
+            )}
+
+            <div
+              className="text-lg font-semibold text-indigo-800 underline cursor-pointer"
+              onClick={(e) => resendCode(email)}
+            >
               إعادة إرسال الرمز
             </div>
             <button
@@ -50,4 +72,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default VerifyCode;

@@ -4,14 +4,14 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import ForgotPassword from "./pages/ForgotPassword";
-import Checkout from "./pages/Checkout";
+import VerifyCode from "./pages/VerifyCode";
 import ResetPassword from "./pages/ResetPassword";
 import createStore from "react-auth-kit/createStore";
 import AuthProvider from "react-auth-kit";
 import RequireAuth from "@auth-kit/react-router/RequireAuth";
 
 const store = createStore({
-  authName: "vol_auth",
+  authName: "_auth",
   authType: "cookie",
   cookieDomain: window.location.hostname,
   cookieSecure: window.location.protocol === "https:",
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   { path: "/register", element: <Signup /> },
   { path: "/login", element: <Login /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
-  { path: "/checkout", element: <Checkout /> },
+  { path: "/verify-code/:email", element: <VerifyCode /> },
   { path: "/reset-password", element: <ResetPassword /> },
 ]);
 
