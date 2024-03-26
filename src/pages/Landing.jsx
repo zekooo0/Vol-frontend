@@ -1,5 +1,3 @@
-import Container from '../components/Container';
-import bgImage from '../assets/home-img.jpg';
 import { Link } from 'react-router-dom';
 const Home = () => {
   return (

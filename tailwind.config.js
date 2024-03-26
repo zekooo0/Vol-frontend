@@ -22,7 +22,7 @@ export default {
         cairo: ['Cairo', 'sans-serif'],
       },
       backgroundImage: {
-        'home-image': "url('./src/assets/home-img.jpg')",
+        'home-image': "url('./public/home-img.jpg')",
       },
     },
   },
