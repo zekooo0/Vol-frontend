@@ -1,12 +1,12 @@
-import Container from '../components/Container';
+import Landing from './Landing';
+import About from './About';
 
 const Home = () => {
   return (
-    <Container>
-      <div className="h-dvh flex items-center justify-center">
-        <h1 className="text-3xl font-black">Volunteering</h1>
-      </div>
-    </Container>
+    <main className="">
+      <Landing />
+      <About />
+    </main>
   );
 };
 

@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 const ResetPassword = () => {
   return (
     <Container>
-      <div className=" md:pt-40 flex items-center justify-center h-full pt-20">
+      <div className="h-dvh  flex items-center justify-center">
         <div className="md:p-5 md:shadow-2xl md:max-w-md flex flex-col w-full max-w-sm">
           <h1 className="mb-4 text-4xl font-bold">اختيار كلمة مرور جديدة</h1>
           <small>
-            لتأمين حسابك، اختر كلمة مرور قوية لم تستخدمها من قبل وتتألف من ٨
-            أحرف على الأقل.
+            لتأمين حسابك، اختر كلمة مرور قوية لم تستخدمها من قبل وتتألف من ٨ أحرف على الأقل.
           </small>
           <form className=" pt-5 space-y-5">
             <div className="flex flex-col justify-start px-1 space-y-5 rounded-md">

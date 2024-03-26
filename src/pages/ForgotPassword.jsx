@@ -1,6 +1,6 @@
-import React from "react";
-import Container from "../components/Container";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Container from '../components/Container';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   const handleSubmit = (e) => {
@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   };
   return (
     <Container>
-      <div className=" md:pt-40 flex items-center justify-center h-full pt-20">
+      <div className="h-dvh flex items-center justify-center pt-20">
         <div className="md:p-5 md:shadow-2xl md:max-w-md flex flex-col w-full max-w-sm">
           <h1 className="mb-4 text-4xl font-bold">هل نسيت كلمة المرور؟</h1>
           <form className=" pt-5 space-y-5" onSubmit={(e) => handleSubmit(e)}>
@@ -23,8 +23,7 @@ const ForgotPassword = () => {
               />
             </div>
             <p>
-              سنرسل رمز تحقق إلى هذا البريد الإلكتروني أو رقم الهاتف إذا كان
-              يتطابق مع حساب موجود.
+              سنرسل رمز تحقق إلى هذا البريد الإلكتروني أو رقم الهاتف إذا كان يتطابق مع حساب موجود.
             </p>
             <button
               type="submit"
