@@ -26,13 +26,13 @@ const VerifyCode = () => {
             إدخال الرمز المؤلف من 6 أرقام
           </h1>
           <form className=" pt-5 space-y-5" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col justify-start px-1 border border-gray-800 rounded-md">
+            <div className="flex flex-col justify-start px-1">
               <input
                 type="number"
                 placeholder="رمز من 6 أرقام"
                 {...register("code")}
                 id="code"
-                className="bg-[#111827]  rounded-lg outline-none  p-3"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
             </div>
             {errors.code && (
@@ -50,13 +50,13 @@ const VerifyCode = () => {
             </div>
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd] text-white"
             >
               <Link to="/reset-password">إرسال</Link>
             </button>
             <button
               type="submit"
-              className="rounded-3xl hover:bg-gray-700 w-full py-3 text-lg font-semibold"
+              className="rounded-3xl hover:bg-[#003478] hover:text-white w-full py-3 text-lg font-semibold"
             >
               <Link to="/login">الرجوع</Link>
             </button>
