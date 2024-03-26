@@ -1,0 +1,4 @@
+.landing-image {
+  background-image: url('./assets/home-img.jpg');
+  background-size: cover;
+}

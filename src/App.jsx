@@ -9,6 +9,8 @@ import ResetPassword from "./pages/ResetPassword";
 import createStore from "react-auth-kit/createStore";
 import AuthProvider from "react-auth-kit";
 import RequireAuth from "@auth-kit/react-router/RequireAuth";
+import SmoothScroll from "./components/SmothScroll";
+import "./app.css";
 
 const store = createStore({
   authName: "_auth",
@@ -42,10 +44,12 @@ const router = createBrowserRouter([
 // className="font-poppins text-base bg-[#111827]  text-neutral-200 min-h-screen container"
 const App = () => {
   return (
-    <div className="bg-[#111827] ">
-      <AuthProvider store={store}>
-        <RouterProvider router={router} />
-      </AuthProvider>
+    <div className="font-cairo ">
+      <SmoothScroll>
+        <AuthProvider store={store}>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </SmoothScroll>
     </div>
   );
 };

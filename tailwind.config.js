@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        cairo: ['Cairo', 'sans-serif'],
       },
     },
   },

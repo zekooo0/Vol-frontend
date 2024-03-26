@@ -19,7 +19,7 @@ export default function Register() {
 
   return (
     <Container>
-      <div className=" flex items-center justify-center gap-4 py-10">
+      <div className="h-dvh flex items-center justify-center gap-4 py-10">
         <div className=" lg:w-1/2 flex flex-col items-center justify-center w-full">
           <h1 className="lg:text-4xl mb-10 text-2xl font-bold">تسجيل الدخول</h1>
           <form
@@ -33,7 +33,7 @@ export default function Register() {
                 placeholder="example@example.com"
                 {...register("email")}
                 id="email"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.email && (
                 <div className="text-red-500">{errors.email.message}</div>
@@ -45,7 +45,7 @@ export default function Register() {
                 <label htmlFor="password">كلمة المرور</label>
                 <Link
                   to="/forgot-password"
-                  className="text-indigo-700 underline"
+                  className="text-[#00c2cd] underline"
                 >
                   هل نسيت كلمة السر؟
                 </Link>
@@ -54,7 +54,7 @@ export default function Register() {
                 type="password"
                 {...register("password")}
                 id="password"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.password && (
                 <div className="text-red-500">{errors.password.message}</div>
@@ -68,7 +68,7 @@ export default function Register() {
             <div>
               <p>
                 ليس لديك حساب؟
-                <Link to="/register" className="pr-2 text-indigo-700 underline">
+                <Link to="/register" className="pr-2 text-[#00c2cd] underline">
                   إنشاء حساب
                 </Link>
               </p>
@@ -76,7 +76,7 @@ export default function Register() {
 
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl text-white hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
               disabled={isSubmitting}
             >
               {isSubmitting ? "يرجى الإنتظار..." : "تسجيل دخول"}

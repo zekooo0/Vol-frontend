@@ -20,7 +20,7 @@ export default function Signup() {
 
   return (
     <Container>
-      <div className=" flex items-center justify-center gap-4 py-10">
+      <div className="h-dvh flex items-center justify-center gap-4 py-10">
         <div className=" lg:w-1/2 flex flex-col items-center justify-center w-full">
           <h1 className="lg:text-4xl mb-10 text-2xl font-bold">إنشاء حساب</h1>
           <form
@@ -34,7 +34,7 @@ export default function Signup() {
                   type="text"
                   {...register("firstName")}
                   id="fName"
-                  className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
+                  className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
                 />
                 {errors.firstName && (
                   <div className="text-red-500">{errors.firstName.message}</div>
@@ -47,7 +47,7 @@ export default function Signup() {
                   type="text"
                   {...register("lastName")}
                   id="lName"
-                  className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
+                  className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
                 />
                 {errors.lastName && (
                   <div className="text-red-500">{errors.lastName?.message}</div>
@@ -61,7 +61,7 @@ export default function Signup() {
                 type="tel"
                 {...register("mobile")}
                 id="phoneNumber"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.mobile && (
                 <div className="text-red-500">{errors.mobile.message}</div>
@@ -75,7 +75,7 @@ export default function Signup() {
                 placeholder="example@example.com"
                 {...register("email")}
                 id="email"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.email && (
                 <div className="text-red-500">{errors.email.message}</div>
@@ -88,7 +88,7 @@ export default function Signup() {
                 type="password"
                 {...register("password")}
                 id="password"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.password && (
                 <div className="text-red-500">{errors.password.message}</div>
@@ -101,7 +101,7 @@ export default function Signup() {
                 type="password"
                 {...register("confirmPassword")}
                 id="cPassword"
-                className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
+                className=" rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
               {errors.confirmPassword && (
                 <div className="text-red-500">
@@ -117,7 +117,7 @@ export default function Signup() {
             <div>
               <p>
                 لديك حساب بالفعل ؟
-                <Link to="/login" className="pr-2 text-indigo-700 underline">
+                <Link to="/login" className="pr-2 text-[#00c2cd] underline">
                   سجل الدخول
                 </Link>
               </p>
@@ -125,7 +125,7 @@ export default function Signup() {
 
             <button
               type="submit"
-              className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
+              className="rounded-3xl hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd] text-white"
             >
               {isSubmitting ? "يرجى الإنتظار..." : "إنشاء حساب"}
             </button>
