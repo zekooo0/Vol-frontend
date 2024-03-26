@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import Image from "../assets/register-img.jpg";
 import Container from "../components/Container";
 import useLogin from "../hooks/useLogin";
+import { zodResolver } from "@hookform/resolvers/zod";
+import loginSchema from "../shema/loginSchema";
 
 export default function Register() {
   const {
@@ -10,7 +12,9 @@ export default function Register() {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
   const { onSubmit } = useLogin(setError);
 
   return (
@@ -22,18 +26,12 @@ export default function Register() {
             onSubmit={handleSubmit(onSubmit)}
             className=" flex flex-col items-center justify-center w-full max-w-sm space-y-5 rounded"
           >
-            <div className=" flex flex-col w-full">
+            <div className="flex flex-col w-full space-y-1">
               <label htmlFor="email">البريد الإلكترونى</label>
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register("email", {
-                  required: "يرجى إدخال البريد الإلكتروني",
-                  pattern: {
-                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                    message: "Invalid email",
-                  },
-                })}
+                {...register("email")}
                 id="email"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -42,7 +40,7 @@ export default function Register() {
               )}
             </div>
 
-            <div className=" flex flex-col w-full">
+            <div className=" flex flex-col w-full space-y-1">
               <div className="flex items-center justify-between">
                 <label htmlFor="password">كلمة المرور</label>
                 <Link
@@ -54,17 +52,7 @@ export default function Register() {
               </div>
               <input
                 type="password"
-                {...register("password", {
-                  required: "يرجى إدخال كلمة المرور",
-                  minLength: {
-                    value: 8,
-                    message: "كلمة المرور يجب ألا تقل عن 8",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "كلمة المرور يجب ألا تزيد عن 16",
-                  },
-                })}
+                {...register("password")}
                 id="password"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -72,6 +60,10 @@ export default function Register() {
                 <div className="text-red-500">{errors.password.message}</div>
               )}
             </div>
+
+            {errors.root && (
+              <div className="text-red-500">{errors.root.message}</div>
+            )}
 
             <div>
               <p>
@@ -82,15 +74,12 @@ export default function Register() {
               </p>
             </div>
 
-            {errors.root && (
-              <div className="text-red-500">{errors.root.message}</div>
-            )}
             <button
               type="submit"
               className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "loading..." : "تسجيل دخول"}
+              {isSubmitting ? "يرجى الإنتظار..." : "تسجيل دخول"}
             </button>
           </form>
         </div>

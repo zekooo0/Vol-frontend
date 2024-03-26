@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import Image from "../assets/register-img.jpg";
 import Container from "../components/Container";
 import useSignup from "../hooks/useSignup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import signupSchema from "../shema/signupSchema";
 
 export default function Signup() {
   const {
@@ -10,9 +12,11 @@ export default function Signup() {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(signupSchema),
+  });
+
   const { onSubmit } = useSignup(setError, errors);
-  console.log(errors);
 
   return (
     <Container>
@@ -24,13 +28,11 @@ export default function Signup() {
             className=" flex flex-col items-center justify-center w-full max-w-sm space-y-5 rounded"
           >
             <div className="xl:flex-row xl:space-x-2 xl:space-y-0 flex flex-col w-full gap-1">
-              <div className="xl:w-1/2 flex flex-col w-full space-y-2">
+              <div className="xl:w-1/2 flex flex-col w-full space-y-1">
                 <label htmlFor="fName">الإسم الأول</label>
                 <input
                   type="text"
-                  {...register("firstName", {
-                    required: "يرجى إدخال الإسم الأول",
-                  })}
+                  {...register("firstName")}
                   id="fName"
                   className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
                 />
@@ -39,13 +41,11 @@ export default function Signup() {
                 )}
               </div>
 
-              <div className="xl:w-1/2 flex flex-col w-full space-y-2">
+              <div className="xl:w-1/2 flex flex-col w-full space-y-1">
                 <label htmlFor="lName">الإسم الأخير</label>
                 <input
                   type="text"
-                  {...register("lastName", {
-                    required: "يرجى إدخال الإسم الأخير",
-                  })}
+                  {...register("lastName")}
                   id="lName"
                   className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2 "
                 />
@@ -55,11 +55,11 @@ export default function Signup() {
               </div>
             </div>
 
-            <div className=" flex flex-col w-full space-y-2">
+            <div className=" flex flex-col w-full space-y-1">
               <label htmlFor="phoneNumber">رقم التلفون</label>
               <input
                 type="tel"
-                {...register("mobile", { required: "يرجى إدخال رقم الموبايل" })}
+                {...register("mobile")}
                 id="phoneNumber"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -68,18 +68,12 @@ export default function Signup() {
               )}
             </div>
 
-            <div className=" flex flex-col w-full space-y-2">
+            <div className=" flex flex-col w-full space-y-1">
               <label htmlFor="email">البريد الإلكترونى</label>
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register("email", {
-                  required: "يرجى إدخال البريد الإلكتروني",
-                  pattern: {
-                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                    message: "Invalid email",
-                  },
-                })}
+                {...register("email")}
                 id="email"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -88,21 +82,11 @@ export default function Signup() {
               )}
             </div>
 
-            <div className=" flex flex-col w-full space-y-2">
+            <div className=" flex flex-col w-full space-y-1">
               <label htmlFor="password">كلمة السر</label>
               <input
                 type="password"
-                {...register("password", {
-                  required: "يرجى إدخال كلمة المرور",
-                  minLength: {
-                    value: 8,
-                    message: "كلمة المرور يجب ألا تقل عن 8",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "كلمة المرور يجب ألا تزيد عن 16",
-                  },
-                })}
+                {...register("password")}
                 id="password"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -111,21 +95,11 @@ export default function Signup() {
               )}
             </div>
 
-            <div className=" flex flex-col w-full space-y-2">
+            <div className=" flex flex-col w-full space-y-1">
               <label htmlFor="cPassword">تأكيد كلمة المرور</label>
               <input
                 type="password"
-                {...register("confirmPassword", {
-                  required: "يرجى إعادة إدخال كلمة المرور",
-                  minLength: {
-                    value: 8,
-                    message: "كلمة المرور يجب ألا تقل عن 8",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "كلمة المرور يجب ألا تزيد عن 16",
-                  },
-                })}
+                {...register("confirmPassword")}
                 id="cPassword"
                 className="bg-[#111827] border rounded-xl outline-none border-gray-800 focus:border-indigo-950 p-2"
               />
@@ -136,6 +110,10 @@ export default function Signup() {
               )}
             </div>
 
+            {errors.root && (
+              <div className="text-red-500">{errors.root.message}</div>
+            )}
+
             <div>
               <p>
                 لديك حساب بالفعل ؟
@@ -145,14 +123,11 @@ export default function Signup() {
               </p>
             </div>
 
-            {errors.root && (
-              <div className="text-red-500">{errors.root.message}</div>
-            )}
             <button
               type="submit"
               className="rounded-3xl hover:bg-indigo-800 w-full py-3 text-lg font-semibold bg-indigo-700"
             >
-              {isSubmitting ? "loading..." : "إنشاء حساب"}
+              {isSubmitting ? "يرجى الإنتظار..." : "إنشاء حساب"}
             </button>
           </form>
         </div>
