@@ -33,7 +33,7 @@ const About = () => {
         </p>
       </div>
       <div className="lg:block h-[700px] flex-1 hidden overflow-hidden rounded-lg">
-        <img src={Image} className=" bg-center bg-cover rounded-lg" />
+        <img src={Image} className=" w-full aspect-[9/16] bg-bottom" />
       </div>
     </div>
   );
