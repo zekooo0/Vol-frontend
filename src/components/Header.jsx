@@ -6,7 +6,7 @@ const Header = () => {
   const { logout, isAuthenticated } = useLogout();
 
   return (
-    <div className=" bg-neutral-200 flex flex-row items-center w-full h-20 text-black">
+    <div className=" flex flex-row items-center w-full h-20 text-black">
       <header className="container flex items-center justify-between">
         <div>
           <img src={Logo} alt="logo" className="w-40" />
