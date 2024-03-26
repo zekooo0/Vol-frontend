@@ -10,6 +10,7 @@ import createStore from 'react-auth-kit/createStore';
 import AuthProvider from 'react-auth-kit';
 import RequireAuth from '@auth-kit/react-router/RequireAuth';
 import SmoothScroll from './components/SmothScroll';
+import './app.css';
 
 const store = createStore({
   authName: 'vol_auth',

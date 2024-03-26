@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 const Home = () => {
   return (
-    <div
-      id="landing"
-      className="text-neutral-200 bg-home-image bg-blend-multiply relative bg-cover"
-    >
+    <div id="landing" className="text-neutral-200 bg-blend-multiply relative bg-cover">
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* <Container> */}
