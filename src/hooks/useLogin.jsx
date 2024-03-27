@@ -8,6 +8,9 @@ function useLogin(setError) {
   const signIn = useSignIn();
   const navigate = useNavigate();
 
+  const query = new URLSearchParams(location.search);
+  const role = query.get("role");
+
   const onSubmit = async (data) => {
     console.log(data);
     try {

@@ -7,6 +7,9 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 function useVerifyCode(setError, email) {
   const navigate = useNavigate();
 
+  const query = new URLSearchParams(location.search);
+  const role = query.get("role");
+
   const onSubmit = async (data) => {
     data.email = email;
     console.log(data);
@@ -17,7 +20,7 @@ function useVerifyCode(setError, email) {
       );
       console.log(res.data, res.status);
       if (res.status == 200) {
-        navigate("/login");
+        navigate(`/login?role=${role}`);
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
@@ -54,12 +57,12 @@ function useVerifyCode(setError, email) {
   const resendCode = async (email) => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/volunteers/auth/resend-verify-email`,
+        `${BASE_URL}/${role}s/auth/resend-verify-email`,
         { email }
       );
       console.log(res.data);
       if (res.status == 200) {
-        navigate(`/verify-code/${email}`);
+        navigate(`/verify-code/${email}?role=${role}`);
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);

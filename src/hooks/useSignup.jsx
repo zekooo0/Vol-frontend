@@ -1,17 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
+import { useEffect } from "react";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-function useSignup(setError) {
+function useSignup(role, selectedImages, setError) {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    console.log(data);
+    data.papers = selectedImages;
+    console.log(data);
     try {
-      const res = await axios.post(`${BASE_URL}/volunteers/auth/signup`, data);
-      console.log(res.data, res.status);
+      const res = await axios.post(`${BASE_URL}/${role}s/auth/signup`, data);
+      console.log(res.data);
       if (res.status == 201) {
-        navigate(`/verify-code/${data.email}`);
+        navigate(`/verify-code/${data.email}?role=${role}`);
       }
     } catch (err) {
       console.log(err);
