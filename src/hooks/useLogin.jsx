@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import axios, { AxiosError } from "axios";
 
@@ -21,16 +20,13 @@ function useLogin(setError) {
             type: "Bearer",
             expiresIn: 3600,
           },
-          // userState: {
-          //   name: "React User",
-          //   uid: 123456,
-          // },
+          userState: {
+            role: "volunteer",
+            // name: "",
+          },
         })
       ) {
         navigate("/");
-      } else {
-        console.log("Error");
-        //Throw error
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
