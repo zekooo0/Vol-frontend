@@ -5,7 +5,7 @@ const Home = () => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* <Container> */}
-      <div className="h-dvh container flex items-center justify-center">
+      <div className="min-h-dvh container flex items-center justify-center">
         <div className="md:w-3/4 xl:w-1/2 z-10 flex flex-col items-center justify-center h-full">
           <h1 className="lg:text-7xl md:text-right md:text-6xl p-2 text-4xl font-black text-center">
             منصة <span className="text-[#00c2cd]">عضد </span> للتطوع في العالم

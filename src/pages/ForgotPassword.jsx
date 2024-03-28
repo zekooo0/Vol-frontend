@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   };
   return (
     <Container>
-      <div className="h-dvh flex items-center justify-center pt-20">
+      <div className="min-h-dvh flex items-center justify-center pt-20">
         <div className="md:p-5 md:shadow-2xl md:max-w-md flex flex-col w-full max-w-sm">
           <h1 className="mb-4 text-4xl font-bold">هل نسيت كلمة المرور؟</h1>
           <form className=" pt-5 space-y-5" onSubmit={(e) => handleSubmit(e)}>

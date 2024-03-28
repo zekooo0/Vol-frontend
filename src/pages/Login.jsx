@@ -27,7 +27,7 @@ export default function Register() {
 
   return (
     <Container>
-      <div className="h-dvh flex items-center justify-center gap-4 py-10">
+      <div className="min-h-dvh flex items-center justify-center gap-4 py-10">
         <div className=" lg:w-1/2 flex flex-col items-center justify-center w-full">
           <h1 className="lg:text-4xl mb-10 text-2xl font-bold">تسجيل الدخول</h1>
           <form
@@ -39,39 +39,30 @@ export default function Register() {
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register("email")}
+                {...register('email')}
                 id="email"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
-              {errors.email && (
-                <div className="text-red-500">{errors.email.message}</div>
-              )}
+              {errors.email && <div className="text-red-500">{errors.email.message}</div>}
             </div>
 
             <div className=" flex flex-col w-full space-y-1">
               <div className="flex items-center justify-between">
                 <label htmlFor="password">كلمة المرور</label>
-                <Link
-                  to="/forgot-password"
-                  className="text-[#00c2cd] underline"
-                >
+                <Link to="/forgot-password" className="text-[#00c2cd] underline">
                   هل نسيت كلمة السر؟
                 </Link>
               </div>
               <input
                 type="password"
-                {...register("password")}
+                {...register('password')}
                 id="password"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
-              {errors.password && (
-                <div className="text-red-500">{errors.password.message}</div>
-              )}
+              {errors.password && <div className="text-red-500">{errors.password.message}</div>}
             </div>
 
-            {errors.root && (
-              <div className="text-red-500">{errors.root.message}</div>
-            )}
+            {errors.root && <div className="text-red-500">{errors.root.message}</div>}
 
             <div>
               <p>
@@ -95,11 +86,7 @@ export default function Register() {
         </div>
 
         <div className="lg:flex items-center justify-center hidden  rounded-lg overflow-hidden flex-1  max-h-[637px] ">
-          <img
-            src={Image}
-            alt="volunteeres image"
-            className=" w-min h-auto rounded-lg"
-          />
+          <img src={Image} alt="volunteeres image" className=" w-min h-auto rounded-lg" />
         </div>
       </div>
     </Container>
