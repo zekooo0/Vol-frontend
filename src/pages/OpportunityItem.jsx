@@ -66,7 +66,11 @@ const OpportunityItem = ({ opportunity }) => {
 
       {photo && (
         <div className="w-1/3 max-h-72">
-          <img className="max-w-full object-cover" src={photo} alt={title} />
+          <img
+            className="max-w-full inline-block rounded-lg object-cover"
+            src={photo}
+            alt={title}
+          />
         </div>
       )}
     </div>

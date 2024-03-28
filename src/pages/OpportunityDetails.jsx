@@ -27,7 +27,8 @@ const OpportunityDetails = () => {
     requestedVolunteersCount,
   } = opportunity;
 
-  photo = photo?.replace("src\\public\\", BASE_URL_IMG);
+  photo = BASE_URL_IMG + photo;
+
   useEffect(() => {
     const res = axios
       .get(`${BASE_URL}/opportunities/${id}`)
