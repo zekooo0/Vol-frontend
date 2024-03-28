@@ -4,28 +4,27 @@ import axios, { AxiosError } from "axios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-function useLogin(setError) {
+function useLogin(role, setError) {
   const signIn = useSignIn();
   const navigate = useNavigate();
 
   const query = new URLSearchParams(location.search);
-  const role = query.get("role");
+  role = query.get("role");
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const res = await axios.post(`${BASE_URL}/volunteers/auth/login`, data);
-
+      console.log(res.data);
       if (
         signIn({
           auth: {
             token: res.data.token,
             type: "Bearer",
-            expiresIn: 3600,
+            expiresIn: 60 * 60 * 24,
           },
           userState: {
             role: "volunteer",
-            // name: "",
+            id: res.data.id,
           },
         })
       ) {

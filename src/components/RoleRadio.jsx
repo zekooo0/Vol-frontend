@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function SignupRadio({ onSelectRole }) {
+function RoleRadio({ onSelectRole }) {
   const [selected, setSelected] = useState("volunteer");
 
   const handleChange = (event) => {
@@ -11,7 +11,7 @@ function SignupRadio({ onSelectRole }) {
   useEffect(() => {}, [selected]);
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center">
       <input
         type="radio"
         id="volunteer"
@@ -21,7 +21,7 @@ function SignupRadio({ onSelectRole }) {
         onChange={handleChange}
         className="w-5 h-5 rounded-full cursor-pointer"
       />
-      <label htmlFor="volunteer" className="text-sm font-medium">
+      <label htmlFor="volunteer" className="text-sm font-medium pr-2">
         متطوع
       </label>
 
@@ -32,13 +32,13 @@ function SignupRadio({ onSelectRole }) {
         value="organization"
         checked={selected === "organization"}
         onChange={handleChange}
-        className="w-5 h-5 rounded-full cursor-pointer"
+        className="w-5 h-5 rounded-full cursor-pointer mr-6"
       />
-      <label htmlFor="organization" className="text-sm font-medium">
+      <label htmlFor="organization" className="text-sm font-medium pr-2">
         مؤسسة خيرية
       </label>
     </div>
   );
 }
 
-export default SignupRadio;
+export default RoleRadio;
