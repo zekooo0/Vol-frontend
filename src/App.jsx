@@ -11,6 +11,11 @@ import AuthProvider from "react-auth-kit";
 import RequireAuth from "@auth-kit/react-router/RequireAuth";
 import SmoothScroll from "./components/SmothScroll";
 import "./app.css";
+import Opportunities from "./pages/Opportunities";
+import About from "./pages/About";
+import OpportunityDetails from "./pages/OpportunityDetails";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const store = createStore({
   authName: "_auth",
@@ -34,6 +39,36 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/opportunities",
+    element: <Layout />,
+    children: [
+      {
+        path: "/opportunities",
+        element: <Opportunities />,
+      },
+    ],
+  },
+  {
+    path: "/opportunities/:id",
+    element: <Layout />,
+    children: [
+      {
+        path: "/opportunities/:id",
+        element: <OpportunityDetails />,
+      },
+    ],
+  },
+  {
+    path: "/about",
+    element: <Layout />,
+    children: [
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
+  },
   { path: "/register", element: <Signup /> },
   { path: "/login", element: <Login /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
@@ -50,6 +85,19 @@ const App = () => {
           <RouterProvider router={router} />
         </AuthProvider>
       </SmoothScroll>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        rtl={true}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        draggable
+        style={{ top: "80px", fontWeight: "bold" }}
+      />
     </div>
   );
 };
