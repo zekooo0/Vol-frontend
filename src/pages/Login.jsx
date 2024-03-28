@@ -5,8 +5,16 @@ import Container from "../components/Container";
 import useLogin from "../hooks/useLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema from "../shema/loginSchema";
+import Spinner from "../components/spinner/Spinner";
+import RoleRadio from "../components/RoleRadio";
+import { useState } from "react";
 
 export default function Register() {
+  const [role, setRole] = useState("volunteer");
+  const onSelectRole = (selectedVal) => {
+    setRole(selectedVal);
+  };
+
   const {
     register,
     handleSubmit,
@@ -15,7 +23,7 @@ export default function Register() {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
-  const { onSubmit } = useLogin(setError);
+  const { onSubmit } = useLogin(role, setError);
 
   return (
     <Container>
@@ -74,12 +82,14 @@ export default function Register() {
               </p>
             </div>
 
+            <RoleRadio onSelectRole={onSelectRole} />
+
             <button
               type="submit"
               className="rounded-3xl text-white hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "يرجى الإنتظار..." : "تسجيل دخول"}
+              {isSubmitting ? <Spinner color={"#fff"} /> : "تسجيل دخول"}
             </button>
           </form>
         </div>
