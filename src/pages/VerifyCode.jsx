@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import useVerifyCode from "../hooks/useVerifyCode";
 import { zodResolver } from "@hookform/resolvers/zod";
 import verifyCodeSchema from "../shema/verifyCodeSchema";
+import Spinner from "../components/spinner/Spinner";
 
 const VerifyCode = () => {
   const {
@@ -52,7 +53,7 @@ const VerifyCode = () => {
               type="submit"
               className="rounded-3xl hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd] text-white"
             >
-              <Link to="/reset-password">إرسال</Link>
+              {isSubmitting ? <Spinner color={"#fff"} /> : "إرسال"}
             </button>
             <button
               type="submit"

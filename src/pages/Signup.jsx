@@ -5,9 +5,10 @@ import Container from "../components/Container";
 import useSignup from "../hooks/useSignup";
 import { zodResolver } from "@hookform/resolvers/zod";
 import volSignupSchema from "../shema/volSignupSchema";
-import SignupRadio from "../components/SignupRadio";
+import RoleRadio from "../components/RoleRadio";
 import { useState } from "react";
 import orgSignupSchema from "../shema/orgSignupSchema";
+import Spinner from "../components/spinner/Spinner";
 
 export default function Signup() {
   const [role, setRole] = useState("volunteer");
@@ -176,13 +177,13 @@ export default function Signup() {
               </p>
             </div>
 
-            <SignupRadio onSelectRole={onSelectRole} />
+            <RoleRadio onSelectRole={onSelectRole} />
 
             <button
               type="submit"
               className="rounded-3xl hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd] text-white"
             >
-              {isSubmitting ? "يرجى الإنتظار..." : "إنشاء حساب"}
+              {isSubmitting ? <Spinner color={"#fff"} /> : "إنشاء حساب"}
             </button>
           </form>
         </div>
