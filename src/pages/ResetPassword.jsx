@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ResetPassword = () => {
   return (
     <Container>
-      <div className="h-dvh flex items-center justify-center">
+      <div className="min-h-dvh flex items-center justify-center">
         <div className="md:p-5 md:shadow-2xl md:max-w-md flex flex-col w-full max-w-sm">
           <h1 className="mb-4 text-4xl font-bold">اختيار كلمة مرور جديدة</h1>
           <small>
