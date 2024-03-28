@@ -25,20 +25,29 @@ function useVolApply() {
         console.log(res.data);
         if (res.status == 200) {
           toast.success(
-            "شكرًا لتطوعك لهذه الفرصة. سيتم التواصل معك في حال تم اختيارك."
+            "شكرًا لتطوعك لهذه الفرصة. سيتم التواصل معك في حال تم اختيارك.",
+            {
+              toastId: oppId, // to prevent appearing the same toast when user click twice
+            }
           );
         }
       } else {
-        toast.warning("يرجى تسجيل الدخول أولًا.");
+        toast.warning("يرجى تسجيل الدخول أولًا.", {
+          toastId: oppId,
+        });
         navigate(`/login`);
       }
     } catch (err) {
       console.log(err);
       const error = err.response?.data;
       if (err instanceof AxiosError && error) {
-        toast.error(error.message);
+        toast.error(error.message, {
+          toastId: oppId,
+        });
       } else {
-        toast.error("Something went wrong");
+        toast.error("Something went wrong", {
+          toastId: oppId,
+        });
       }
     }
   };
