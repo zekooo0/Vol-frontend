@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Container from '../components/Container';
 const Layout = () => {
   return (
-    <div>
+    <div className="min-h-dvh flex flex-col">
       <Header />
       <Outlet />
       <Footer />

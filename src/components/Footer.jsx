@@ -5,18 +5,15 @@ const year = new Date().getFullYear();
 
 const Footer = () => {
   return (
-    <div className="container flex flex-col w-full pb-10 border-t">
+    <div className=" container flex flex-col w-full pb-10 mt-10 border-t">
       <div className="flex items-center justify-between">
         <div>
           <ul className="flex gap-10 text-lg font-medium">
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">من نحن</Link>
             </li>
             <li>
-              <Link to="/privacy">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/privacy">سياسة الخصوصية</Link>
             </li>
           </ul>
         </div>

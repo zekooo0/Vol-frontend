@@ -1,22 +1,21 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from './pages/Layout';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Home from './pages/Home';
-import PrivacyPolicy from './pages/PrivacyPolicy';
 import ForgotPassword from './pages/ForgotPassword';
 import VerifyCode from './pages/VerifyCode';
 import ResetPassword from './pages/ResetPassword';
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
+import SmoothScroll from './components/SmothScroll';
+import Opportunities from './pages/Opportunities';
+import OpportunityDetails from './pages/OpportunityDetails';
 import createStore from 'react-auth-kit/createStore';
 import AuthProvider from 'react-auth-kit';
-import RequireAuth from '@auth-kit/react-router/RequireAuth';
-import SmoothScroll from './components/SmothScroll';
-import './app.css';
-import Opportunities from './pages/Opportunities';
-import About from './pages/About';
-import OpportunityDetails from './pages/OpportunityDetails';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './app.css';
 
 const store = createStore({
   authName: '_auth',
@@ -36,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/privacy',
-        element: <PrivacyPolicy />,
+        element: <Privacy />,
       },
       {
         path: '/about',

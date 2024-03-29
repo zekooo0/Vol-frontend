@@ -1,6 +1,4 @@
-import React from 'react';
-
-const privacyPolicy = () => {
+const Privacy = () => {
   return (
     <div className="container py-20 text-lg" style={{ direction: 'ltr' }}>
       <h1 className="text-xl font-medium">Privacy Policy</h1>
@@ -486,4 +484,4 @@ const privacyPolicy = () => {
   );
 };
 
-export default privacyPolicy;
+export default Privacy;
