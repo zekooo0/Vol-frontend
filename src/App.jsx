@@ -17,6 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import { Analytics } from '@vercel/analytics/react';
 import 'react-toastify/dist/ReactToastify.css';
 import './app.css';
+import OrganizationDashboard from './pages/OrganizationDashboard';
 
 const store = createStore({
   authName: '_auth',
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/opportunities/:id',
         element: <OpportunityDetails />,
+      },
+      {
+        path: '/organization-dashboard',
+        element: <OrganizationDashboard />,
       },
     ],
   },
