@@ -1,16 +1,23 @@
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import Image from "../assets/register-img.jpg";
-import Container from "../components/Container";
-import useLogin from "../hooks/useLogin";
-import { zodResolver } from "@hookform/resolvers/zod";
-import loginSchema from "../shema/loginSchema";
-import Spinner from "../components/spinner/Spinner";
-import RoleRadio from "../components/RoleRadio";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import Image from '../assets/register-img.jpg';
+import Container from '../components/Container';
+import useLogin from '../hooks/useLogin';
+import { zodResolver } from '@hookform/resolvers/zod';
+import loginSchema from '../shema/loginSchema';
+import Spinner from '../components/spinner/Spinner';
+import RoleRadio from '../components/RoleRadio';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Register() {
-  const [role, setRole] = useState("volunteer");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [role, setRole] = useState('volunteer');
+
+  useEffect(() => {
+    setSearchParams({ role });
+  }, [role]);
+
   const onSelectRole = (selectedVal) => {
     setRole(selectedVal);
   };
@@ -39,7 +46,7 @@ export default function Register() {
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register("email")}
+                {...register('email')}
                 id="email"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
@@ -60,7 +67,7 @@ export default function Register() {
               </div>
               <input
                 type="password"
-                {...register("password")}
+                {...register('password')}
                 id="password"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
@@ -89,7 +96,7 @@ export default function Register() {
               className="rounded-3xl text-white hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
               disabled={isSubmitting}
             >
-              {isSubmitting ? <Spinner color={"#fff"} /> : "تسجيل دخول"}
+              {isSubmitting ? <Spinner color={'#fff'} /> : 'تسجيل دخول'}
             </button>
           </form>
         </div>
