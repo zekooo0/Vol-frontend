@@ -10,10 +10,7 @@ function useLogin(role, setError) {
 
   const query = new URLSearchParams(location.search);
   role = query.get('role');
-<<<<<<< HEAD
-=======
   console.log(role);
->>>>>>> 2f8058fee77ec65ae578a46da984be42865518a4
 
   const onSubmit = async (data) => {
     try {
@@ -27,11 +24,8 @@ function useLogin(role, setError) {
             expiresIn: 60 * 60 * 24,
           },
           userState: {
-<<<<<<< HEAD
             role: role,
-=======
             role: 'volunteer',
->>>>>>> 2f8058fee77ec65ae578a46da984be42865518a4
             id: res.data.id,
           },
         })
