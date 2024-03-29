@@ -8,11 +8,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import loginSchema from '../shema/loginSchema';
 import Spinner from '../components/spinner/Spinner';
 import RoleRadio from '../components/RoleRadio';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-export default function Register() {
-  const [searchParams, setSearchParams] = useSearchParams();
+export default function Login() {
   const [role, setRole] = useState('volunteer');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setSearchParams({ role });

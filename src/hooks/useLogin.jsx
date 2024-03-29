@@ -10,12 +10,10 @@ function useLogin(role, setError) {
 
   const query = new URLSearchParams(location.search);
   role = query.get('role');
-  console.log(role);
 
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(`${BASE_URL}/${role}s/auth/login`, data);
-      console.log(res.data);
       if (
         signIn({
           auth: {
@@ -24,7 +22,7 @@ function useLogin(role, setError) {
             expiresIn: 60 * 60 * 24,
           },
           userState: {
-            role: role,
+            role: res.role,
             id: res.data.id,
           },
         })
