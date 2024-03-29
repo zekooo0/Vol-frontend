@@ -14,6 +14,7 @@ import OpportunityDetails from './pages/OpportunityDetails';
 import createStore from 'react-auth-kit/createStore';
 import AuthProvider from 'react-auth-kit';
 import { ToastContainer } from 'react-toastify';
+import { Analytics } from '@vercel/analytics/react';
 import 'react-toastify/dist/ReactToastify.css';
 import './app.css';
 
@@ -79,6 +80,7 @@ const App = () => {
         draggable
         style={{ top: '80px', fontWeight: 'bold' }}
       />
+      <Analytics />
     </div>
   );
 };
