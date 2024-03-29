@@ -10,12 +10,11 @@ function useLogin(role, setError) {
 
   const query = new URLSearchParams(location.search);
   role = query.get('role');
+  console.log(role);
 
   const onSubmit = async (data) => {
-    let url = `${BASE_URL}/organizations/auth/login`;
-    if (role === 'volunteer') url = `${BASE_URL}/volunteers/auth/login`;
     try {
-      const res = await axios.post(url, data);
+      const res = await axios.post(`${BASE_URL}/${role}s/auth/login`, data);
       console.log(res.data);
       if (
         signIn({
@@ -25,12 +24,11 @@ function useLogin(role, setError) {
             expiresIn: 60 * 60 * 24,
           },
           userState: {
-            role: res.data.role,
+            role: 'volunteer',
             id: res.data.id,
           },
         })
       ) {
-        localStorage.setItem('id', res.data.id);
         navigate('/');
       }
     } catch (err) {
