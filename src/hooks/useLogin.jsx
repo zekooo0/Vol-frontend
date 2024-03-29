@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
-import axios, { AxiosError } from "axios";
+import { useNavigate } from 'react-router-dom';
+import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import axios, { AxiosError } from 'axios';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,7 +9,7 @@ function useLogin(role, setError) {
   const navigate = useNavigate();
 
   const query = new URLSearchParams(location.search);
-  role = query.get("role");
+  role = query.get('role');
   console.log(role);
 
   const onSubmit = async (data) => {
@@ -20,16 +20,16 @@ function useLogin(role, setError) {
         signIn({
           auth: {
             token: res.data.token,
-            type: "Bearer",
+            type: 'Bearer',
             expiresIn: 60 * 60 * 24,
           },
           userState: {
-            role: "volunteer",
+            role: 'volunteer',
             id: res.data.id,
           },
         })
       ) {
-        navigate("/");
+        navigate('/');
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
@@ -37,7 +37,7 @@ function useLogin(role, setError) {
         const error = err.response?.data;
         console.log(error);
         if (error) {
-          if (error.message == "Validation server") {
+          if (error.message == 'Validation server') {
             const validationErrors = error.data;
             validationErrors?.forEach((err) => {
               setError(err.path, {
@@ -46,18 +46,18 @@ function useLogin(role, setError) {
             });
           } else {
             console.log(error.message);
-            setError("root", {
+            setError('root', {
               message: error.message,
             });
           }
         } else {
-          setError("root", {
+          setError('root', {
             message: err.message,
           });
         }
       } else {
-        setError("root", {
-          message: "Something went wrong",
+        setError('root', {
+          message: 'Something went wrong',
         });
       }
     }
