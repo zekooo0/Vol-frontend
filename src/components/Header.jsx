@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
-import Logo from "../assets/logo2_without_bg.png";
+import { Link } from 'react-router-dom';
+import useLogout from '../hooks/useLogout';
+import Logo from '../assets/logo2_without_bg.png';
 
 const Header = () => {
   const { logout, isAuthenticated } = useLogout();
@@ -14,14 +14,14 @@ const Header = () => {
           </Link>
           <ul className="md:flex hidden gap-10 text-lg font-medium">
             <li>
-              <a href="/">الصفحة الرئيسية</a>
+              <Link to="/">الصفحة الرئيسية</Link>
             </li>
 
             <li>
               <Link to="/opportunities">الفرص التطوعية</Link>
             </li>
             <li>
-              <a href="/about">من نحن</a>
+              <Link to="/about">من نحن</Link>
             </li>
           </ul>
         </div>
