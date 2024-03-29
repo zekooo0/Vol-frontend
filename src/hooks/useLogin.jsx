@@ -25,7 +25,6 @@ function useLogin(role, setError) {
           },
           userState: {
             role: role,
-            role: 'volunteer',
             id: res.data.id,
           },
         })
