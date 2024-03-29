@@ -10,10 +10,11 @@ function useLogin(role, setError) {
 
   const query = new URLSearchParams(location.search);
   role = query.get("role");
+  console.log(role);
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post(`${BASE_URL}/volunteers/auth/login`, data);
+      const res = await axios.post(`${BASE_URL}/${role}s/auth/login`, data);
       console.log(res.data);
       if (
         signIn({
