@@ -1,26 +1,35 @@
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import axios, { AxiosError } from "axios";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-function useSignup(role, selectedImages, setError) {
+function useResetPassword(setError) {
   const navigate = useNavigate();
 
+  const query = new URLSearchParams(location.search);
+  const role = query.get("role");
+  const token = query.get("token");
+
   const onSubmit = async (data) => {
-    console.log(data);
-    data.papers = selectedImages;
+    data.token = token;
     console.log(data);
     try {
-      const res = await axios.post(`${BASE_URL}/${role}s/auth/signup`, data);
+      const res = await axios.post(
+        `${BASE_URL}/${role}s/auth/set-new-password`,
+        data
+      );
       console.log(res.data);
-      if (res.status == 201) {
-        navigate(`/verify-code/${data.email}?from=signup&role=${role}`);
+      if (res.status == 200) {
+        toast.success("تم تغيير كلمة المرور بنجاح");
+        navigate(`/login?role=${role}`);
       }
     } catch (err) {
-      console.log(err);
+      console.log(err, err instanceof AxiosError);
       if (err instanceof AxiosError) {
         const error = err.response?.data;
+        console.log(error);
         if (error) {
           if (error.message == "Validation server") {
             const validationErrors = error.data;
@@ -30,6 +39,7 @@ function useSignup(role, selectedImages, setError) {
               });
             });
           } else {
+            console.log(error.message);
             setError("root", {
               message: error.message,
             });
@@ -50,4 +60,4 @@ function useSignup(role, selectedImages, setError) {
   return { onSubmit };
 }
 
-export default useSignup;
+export default useResetPassword;

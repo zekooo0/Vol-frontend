@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -8,19 +9,26 @@ function useVerifyCode(setError, email) {
   const navigate = useNavigate();
 
   const query = new URLSearchParams(location.search);
+  const from = query.get("from");
   const role = query.get("role");
+  const token = query.get("token");
 
   const onSubmit = async (data) => {
     data.email = email;
-    console.log(data);
+    data.token = token;
+
     try {
       const res = await axios.post(
-        `${BASE_URL}/volunteers/auth/verify-email`,
+        `${BASE_URL}/${role}s/auth/verify-email`,
         data
       );
       console.log(res.data, res.status);
       if (res.status == 200) {
-        navigate(`/login?role=${role}`);
+        if (from == "signup") {
+          navigate(`/login?role=${role}`);
+        } else if (from == "forgetpassword") {
+          navigate(`/reset-password?role=${role}&token=${token}`);
+        }
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
@@ -62,7 +70,7 @@ function useVerifyCode(setError, email) {
       );
       console.log(res.data);
       if (res.status == 200) {
-        navigate(`/verify-code/${email}?role=${role}`);
+        toast.success("تم إرسال رمز التحقق");
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
