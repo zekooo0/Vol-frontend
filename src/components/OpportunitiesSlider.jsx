@@ -46,7 +46,6 @@ const OpportunitiesSlider = () => {
                     <p>{`الموقع: ${
                       !opp.country && !opp.city ? 'Online' : `${opp.country}, ${opp.city}`
                     }`}</p>
-                    {/* <p>{opp.type}</p> */}
                     <p>{` عدد المتطوعين المطلوبين: ${opp.requestedVolunteersCount}`}</p>
                     <p>{` عدد المتقدمين : ${opp.appliedVolunteers.length}`}</p>
                     {opp.appliedVolunteers.length === opp.requestedVolunteersCount ? (
