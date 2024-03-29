@@ -80,7 +80,7 @@ const App = () => {
         draggable
         style={{ top: '80px', fontWeight: 'bold' }}
       />
-      <Analytics />
+      {/* <Analytics /> */}
     </div>
   );
 };
