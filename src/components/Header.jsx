@@ -21,6 +21,9 @@ const Header = () => {
               <Link to="/opportunities">الفرص التطوعية</Link>
             </li>
             <li>
+              <Link to="/volunteer/dashboard">التقديمات</Link>
+            </li>
+            <li>
               <Link to="/about">من نحن</Link>
             </li>
           </ul>

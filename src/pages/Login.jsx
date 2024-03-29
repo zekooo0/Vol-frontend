@@ -7,10 +7,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import loginSchema from '../shema/loginSchema';
 import Spinner from '../components/spinner/Spinner';
 import RoleRadio from '../components/RoleRadio';
+<<<<<<< HEAD
 import { useState } from 'react';
 
 export default function Login() {
   const [role, setRole] = useState('volunteer');
+=======
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+export default function Register() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [role, setRole] = useState('volunteer');
+
+  useEffect(() => {
+    setSearchParams({ role });
+  }, [role]);
+
+>>>>>>> 2f8058fee77ec65ae578a46da984be42865518a4
   const onSelectRole = (selectedVal) => {
     setRole(selectedVal);
   };

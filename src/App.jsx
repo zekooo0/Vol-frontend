@@ -17,7 +17,11 @@ import { ToastContainer } from 'react-toastify';
 import { Analytics } from '@vercel/analytics/react';
 import 'react-toastify/dist/ReactToastify.css';
 import './app.css';
+<<<<<<< HEAD
 import OrganizationDashboard from './pages/OrganizationDashboard';
+=======
+import { VolDashboard } from './pages/volDashboard';
+>>>>>>> 2f8058fee77ec65ae578a46da984be42865518a4
 
 const store = createStore({
   authName: '_auth',
@@ -52,8 +56,13 @@ const router = createBrowserRouter([
         element: <OpportunityDetails />,
       },
       {
+<<<<<<< HEAD
         path: '/organization-dashboard',
         element: <OrganizationDashboard />,
+=======
+        path: '/volunteer/dashboard',
+        element: <VolDashboard />,
+>>>>>>> 2f8058fee77ec65ae578a46da984be42865518a4
       },
     ],
   },
