@@ -4,7 +4,7 @@ import Logo from '../assets/logo2_without_bg.png';
 
 const Header = () => {
   const { logout, isAuthenticated } = useLogout();
-
+  const role = localStorage.getItem('role');
   return (
     <div className=" flex flex-row items-center w-full h-20 text-black shadow">
       <header className="container flex items-center justify-between">
@@ -20,9 +20,16 @@ const Header = () => {
             <li>
               <Link to="/opportunities">الفرص التطوعية</Link>
             </li>
-            <li>
-              <Link to="/volunteer/dashboard">التقديمات</Link>
-            </li>
+            {isAuthenticated && role === 'vol' && (
+              <li>
+                <Link to="/volunteer/dashboard">التقديمات</Link>
+              </li>
+            )}
+            {isAuthenticated && role === 'org' && (
+              <li>
+                <Link to="/organization-dashboard">التقديمات</Link>
+              </li>
+            )}
             <li>
               <Link to="/about">من نحن</Link>
             </li>

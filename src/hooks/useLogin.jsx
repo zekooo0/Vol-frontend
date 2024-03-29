@@ -22,12 +22,14 @@ function useLogin(role, setError) {
             expiresIn: 60 * 60 * 24,
           },
           userState: {
-            role: res.role,
+            role: res.data.role,
             id: res.data.id,
           },
         })
       ) {
         navigate('/');
+        localStorage.setItem('role', res.data.role);
+        localStorage.setItem('id', res.data.id);
       }
     } catch (err) {
       console.log(err, err instanceof AxiosError);
