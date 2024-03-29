@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import SwiperCore from 'swiper';
-import 'swiper/css/bundle';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import SwiperCore from "swiper";
+import "swiper/css/bundle";
+import { Link } from "react-router-dom";
+import Spinner from "./spinner/Spinner";
+import styles from "../styles";
 
 SwiperCore.use([Autoplay]);
 
@@ -26,7 +28,7 @@ const OpportunitiesSlider = () => {
   }, []);
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <div>
           <Swiper
             slidesPerView={1}
@@ -40,22 +42,31 @@ const OpportunitiesSlider = () => {
               <SwiperSlide key={opp._id}>
                 <div className="flex items-center gap-5">
                   <div
-                    className={`${opp.photo ? 'md:w-1/3' : 'md:w-1/2'} flex flex-col items-center`}
+                    className={`${
+                      opp.photo ? "md:w-1/3" : "md:w-1/2"
+                    } flex flex-col items-center`}
                   >
                     <h1 className="pb-2 text-xl font-medium">{opp.title}</h1>
-                    <p>{opp.desc}</p>{' '}
+                    <p>{opp.desc}</p>{" "}
                     <button className="rounded-xl md:hidden text-white hover:bg-[#003478] mt-5 py-3 w-3/4 text-lg font-semibold bg-[#00c2cd]">
                       <Link to={`/opportunities/${opp._id}`}>التفاصيل ...</Link>
                     </button>
                   </div>
                   <div className="h-60 w-[1px] bg-gray-300 hidden md:block"></div>
-                  <div className={`md:block hidden ${opp.photo ? 'md:w-1/3' : 'md:w-1/2'} text-lg`}>
+                  <div
+                    className={`md:block hidden ${
+                      opp.photo ? "md:w-1/3" : "md:w-1/2"
+                    } text-lg`}
+                  >
                     <p>{`الموقع: ${
-                      !opp.country && !opp.city ? 'Online' : `${opp.country}, ${opp.city}`
+                      !opp.country && !opp.city
+                        ? "Online"
+                        : `${opp.country}, ${opp.city}`
                     }`}</p>
                     <p>{` عدد المتطوعين المطلوبين: ${opp.requestedVolunteersCount}`}</p>
                     <p>{` عدد المتقدمين : ${opp.appliedVolunteers.length}`}</p>
-                    {opp.appliedVolunteers.length === opp.requestedVolunteersCount ? (
+                    {opp.appliedVolunteers.length ===
+                    opp.requestedVolunteersCount ? (
                       <button
                         disabled
                         className="rounded-xl mx-auto text-white bg-[#003478] w-1/4 mt-5 py-3 text-lg font-semibold "
@@ -88,6 +99,12 @@ const OpportunitiesSlider = () => {
             ))}
           </Swiper>
         </div>
+      ) : (
+        <Spinner
+          color={"#00c2cd"}
+          size={20}
+          apiSpinner={styles.homeApiSpinner}
+        />
       )}
     </>
   );
