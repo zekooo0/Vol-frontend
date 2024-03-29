@@ -3,12 +3,18 @@ import { useEffect, useState } from "react";
 function RoleRadio({ onSelectRole }) {
   const [selected, setSelected] = useState("volunteer");
 
+  const query = new URLSearchParams(location.search);
+  const role = query.get("role");
+  useEffect(() => {
+    if (role) {
+      setSelected(role);
+    }
+  }, []);
+
   const handleChange = (event) => {
     setSelected(event.target.value);
     onSelectRole && onSelectRole(event.target.value);
   };
-
-  useEffect(() => {}, [selected]);
 
   return (
     <div className="flex items-center">
