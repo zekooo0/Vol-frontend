@@ -15,7 +15,6 @@ const Opportunities = () => {
     const res = axios
       .get(`${BASE_URL}/opportunities`)
       .then((res) => {
-        console.log(res.data.data);
         setOpportunities(res.data.data);
       })
       .catch((err) => console.log(err));

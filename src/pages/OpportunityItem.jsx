@@ -10,7 +10,6 @@ const OpportunityItem = ({ opportunity }) => {
     opportunity;
 
   const photoURL = BASE_URL_IMG + photo;
-  console.log(photo);
   const { handleVolApply } = useVolApply();
 
   return (
