@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,39 +9,39 @@ const getStatusMessage = (isAccepted, isApplied, status) => {
     return (
       <p
         style={{
-          backgroundColor: '#03943da6',
-          padding: '0.4rem',
-          fontWeight: 'bold',
-          color: 'white',
-          textAlign: 'center',
+          backgroundColor: "#03943da6",
+          padding: "0.4rem",
+          fontWeight: "bold",
+          color: "white",
+          textAlign: "center",
         }}
       >
         مقبول
       </p>
     );
-  } else if (isApplied && status === 'مفتوحة') {
+  } else if (isApplied && status === "مفتوحة") {
     return (
       <p
         style={{
-          backgroundColor: '#ffeb838f',
-          padding: '0.4rem',
-          fontWeight: 'bold',
-          color: 'white',
-          textAlign: 'center',
+          backgroundColor: "#ffeb838f",
+          padding: "0.4rem",
+          fontWeight: "bold",
+          color: "white",
+          textAlign: "center",
         }}
       >
         معلق
       </p>
     );
-  } else if (isApplied && status !== 'مفتوحة') {
+  } else if (isApplied && status !== "مفتوحة") {
     return (
       <p
         style={{
-          backgroundColor: '#ff33338f',
-          padding: '0.4rem',
-          fontWeight: 'bold',
-          color: 'white',
-          textAlign: 'center',
+          backgroundColor: "#ff33338f",
+          padding: "0.4rem",
+          fontWeight: "bold",
+          color: "white",
+          textAlign: "center",
         }}
       >
         مرفوض
@@ -52,21 +52,21 @@ const getStatusMessage = (isAccepted, isApplied, status) => {
 
 const mapOpportunity = (opp, userId) => ({
   ...opp,
-  type: opp.type === 'on-site' ? 'بالموقع' : 'عن بعد',
+  type: opp.type === "on-site" ? "بالموقع" : "عن بعد",
   status:
-    opp.status === 'open'
-      ? 'مفتوحة'
-      : opp.status === 'archived'
-      ? 'مؤرشفة'
-      : 'مغلفة',
+    opp.status === "open"
+      ? "مفتوحة"
+      : opp.status === "archived"
+      ? "مؤرشفة"
+      : "مغلفة",
   isAccepted: opp.acceptedVolunteers.includes(userId),
   isApplied: opp.appliedVolunteers.includes(userId),
 });
 
-export const VolDashboard = () => {
+const VolDashboard = () => {
   const [opportunities, setOpportunities] = useState([]);
-  const userToken = Cookies.get('_auth');
-  const userId = localStorage.getItem('id');
+  const userToken = Cookies.get("_auth");
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
     const fetchOpportunities = async () => {
@@ -89,14 +89,14 @@ export const VolDashboard = () => {
 
   return (
     <>
-      <section className="p-5 sm:p-5 antialiased" style={{ minHeight: '65vh' }}>
+      <section className="p-5 sm:p-5 antialiased" style={{ minHeight: "65vh" }}>
         <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
           <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                   className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-                  style={{ textAlign: 'right' }}
+                  style={{ textAlign: "right" }}
                 >
                   <tr>
                     <th scope="col" className="px-4 py-4">
@@ -113,7 +113,7 @@ export const VolDashboard = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody style={{ textAlign: 'right' }}>
+                <tbody style={{ textAlign: "right" }}>
                   {opportunities.map((opp) => (
                     <tr className="border-b dark:border-gray-700" key={opp._id}>
                       <th
@@ -142,3 +142,5 @@ export const VolDashboard = () => {
     </>
   );
 };
+
+export default VolDashboard;
