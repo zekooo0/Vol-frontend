@@ -52,9 +52,11 @@ const ForgotPassword = () => {
               {isSubmitting ? <Spinner /> : "التالي"}
             </button>
           </form>
-          <button className="rounded-3xl hover:bg-gray-600 w-full py-3 my-5 text-lg font-semibold text-white bg-gray-500">
-            <Link to="/login">رجوع</Link>
-          </button>
+          <Link to="/login">
+            <button className="rounded-3xl hover:bg-gray-600 w-full py-3 my-5 text-lg font-semibold text-white bg-gray-500">
+              رجوع
+            </button>
+          </Link>
         </div>
       </div>
     </Container>
