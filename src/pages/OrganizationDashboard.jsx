@@ -26,18 +26,24 @@ const OrganizationDashboard = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${BASE_URL}/opportunities/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
   useEffect(() => {
     fetchData();
-  }, [token, data]);
+  }, [token]);
+
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this opportunity?');
+    if (confirmDelete) {
+      try {
+        await axios.delete(`${BASE_URL}/opportunities/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        fetchData();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <div className="container flex flex-col mt-10 text-lg">
       {isLoading ? (
