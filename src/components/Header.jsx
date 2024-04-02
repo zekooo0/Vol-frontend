@@ -27,7 +27,7 @@ const Header = () => {
             )}
             {isAuthenticated && role === 'org' && (
               <li>
-                <Link to="/organization-dashboard">التقديمات</Link>
+                <Link to="/organization-dashboard">لوحة التحكم</Link>
               </li>
             )}
             <li>

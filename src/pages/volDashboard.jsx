@@ -53,12 +53,7 @@ const getStatusMessage = (isAccepted, isApplied, status) => {
 const mapOpportunity = (opp, userId) => ({
   ...opp,
   type: opp.type === 'on-site' ? 'بالموقع' : 'عن بعد',
-  status:
-    opp.status === 'open'
-      ? 'مفتوحة'
-      : opp.status === 'archived'
-      ? 'مؤرشفة'
-      : 'مغلفة',
+  status: opp.status === 'open' ? 'مفتوحة' : opp.status === 'archived' ? 'مؤرشفة' : 'مغلفة',
   isAccepted: opp.acceptedVolunteers.includes(userId),
   isApplied: opp.appliedVolunteers.includes(userId),
 });
@@ -89,13 +84,13 @@ export const VolDashboard = () => {
 
   return (
     <>
-      <section className="p-5 sm:p-5 antialiased" style={{ minHeight: '65vh' }}>
-        <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+      {/* <section className="sm:p-5 p-5 antialiased" style={{ minHeight: '65vh' }}>
+        <div className="lg:px-12 max-w-screen-xl px-4 mx-auto">
+          <div className="dark:bg-gray-800 sm:rounded-lg relative overflow-hidden bg-white shadow-md">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <table className="dark:text-gray-400 w-full text-sm text-left text-gray-500">
                 <thead
-                  className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                  className="bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs text-gray-700 uppercase"
                   style={{ textAlign: 'right' }}
                 >
                   <tr>
@@ -115,10 +110,10 @@ export const VolDashboard = () => {
                 </thead>
                 <tbody style={{ textAlign: 'right' }}>
                   {opportunities.map((opp) => (
-                    <tr className="border-b dark:border-gray-700" key={opp._id}>
+                    <tr className="dark:border-gray-700 border-b" key={opp._id}>
                       <th
                         scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="whitespace-nowrap dark:text-white px-4 py-3 font-medium text-gray-900"
                       >
                         <a href={`/opportunities/${opp._id}`}>{opp.title}</a>
                       </th>
@@ -138,7 +133,7 @@ export const VolDashboard = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
