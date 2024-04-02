@@ -15,7 +15,7 @@ const initalState = {
 };
 const orgId = localStorage.getItem('id');
 
-const Modal = ({ isOpen, setIsOpen }) => {
+const Modal = ({ isOpen, setIsOpen, fetchData }) => {
   const [modalData, setModalData] = useState(initalState);
 
   const handleSubmit = async () => {
@@ -31,7 +31,9 @@ const Modal = ({ isOpen, setIsOpen }) => {
     const res = await axios.post(`${BASE_URL}/opportunities`, oppData, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    setModalData(initalState);
     setIsOpen(false);
+    fetchData();
   };
 
   return (

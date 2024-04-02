@@ -8,7 +8,7 @@ import volSignupSchema from '../shema/volSignupSchema';
 import RoleRadio from '../components/RoleRadio';
 import { useState } from 'react';
 import orgSignupSchema from '../shema/orgSignupSchema';
-import Spinner from '../components/spinner/Spinner';
+import Spinner from '../components/Spinner';
 
 export default function Signup() {
   const [role, setRole] = useState('volunteer');
