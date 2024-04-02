@@ -1,71 +1,129 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import ForgotPassword from './pages/ForgotPassword';
-import VerifyCode from './pages/VerifyCode';
-import ResetPassword from './pages/ResetPassword';
-import Layout from './pages/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Privacy from './pages/Privacy';
-import SmoothScroll from './components/SmothScroll';
-import Opportunities from './pages/Opportunities';
-import OpportunityDetails from './pages/OpportunityDetails';
-import createStore from 'react-auth-kit/createStore';
-import AuthProvider from 'react-auth-kit';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './app.css';
-import OrganizationDashboard from './pages/OrganizationDashboard';
-import { VolDashboard } from './pages/volDashboard';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
+import About from "./pages/About";
+import { lazy, Suspense } from "react";
+const Signup = lazy(() => import("./pages/Signup"));
+const Login = lazy(() => import("./pages/Login"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
+const VerifyCode = lazy(() => import("./pages/VerifyCode"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Opportunities = lazy(() => import("./pages/Opportunities"));
+const OpportunityDetails = lazy(() => import("./pages/OpportunityDetails"));
+const VolDashboard = lazy(() => import("./pages/volDashboard"));
+const OrganizationDashboard = lazy(() =>
+  import("./pages/OrganizationDashboard")
+);
+import SmoothScroll from "./components/SmothScroll";
+import AuthProvider from "react-auth-kit";
+import createStore from "react-auth-kit/createStore";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./app.css";
 
 const store = createStore({
-  authName: '_auth',
-  authType: 'cookie',
+  authName: "_auth",
+  authType: "cookie",
   cookieDomain: window.location.hostname,
-  cookieSecure: window.location.protocol === 'https:',
+  cookieSecure: window.location.protocol === "https:",
 });
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/privacy',
-        element: <Privacy />,
-      },
-      {
-        path: '/about',
+        path: "/about",
         element: <About />,
       },
       {
-        path: '/opportunities',
-        element: <Opportunities />,
+        path: "/privacy",
+        element: (
+          <Suspense>
+            <Privacy />
+          </Suspense>
+        ),
       },
       {
-        path: '/opportunities/:id',
-        element: <OpportunityDetails />,
+        path: "/opportunities",
+        element: (
+          <Suspense>
+            <Opportunities />
+          </Suspense>
+        ),
       },
       {
-        path: '/organization-dashboard',
-        element: <OrganizationDashboard />,
+        path: "/opportunities/:id",
+        element: (
+          <Suspense>
+            <OpportunityDetails />
+          </Suspense>
+        ),
       },
       {
-        path: '/volunteer/dashboard',
-        element: <VolDashboard />,
+        path: "/organization-dashboard",
+        element: (
+          <Suspense>
+            <OrganizationDashboard />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/volunteer/dashboard",
+        element: (
+          <Suspense>
+            <VolDashboard />
+          </Suspense>
+        ),
       },
     ],
   },
-  { path: '/register', element: <Signup /> },
-  { path: '/login', element: <Login /> },
-  { path: '/forgot-password', element: <ForgotPassword /> },
-  { path: '/verify-code/:email', element: <VerifyCode /> },
-  { path: '/reset-password', element: <ResetPassword /> },
+  {
+    path: "/register",
+    element: (
+      <Suspense>
+        <Signup />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense>
+        <Login />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/forgot-password",
+    element: (
+      <Suspense>
+        <ForgotPassword />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/verify-code/:email",
+    element: (
+      <Suspense>
+        <VerifyCode />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/reset-password",
+    element: (
+      <Suspense>
+        <ResetPassword />
+      </Suspense>
+    ),
+  },
 ]);
 
 const App = () => {
@@ -87,7 +145,7 @@ const App = () => {
         pauseOnFocusLoss
         pauseOnHover
         draggable
-        style={{ top: '80px', fontWeight: 'bold' }}
+        style={{ top: "80px", fontWeight: "bold" }}
       />
       {/* <Analytics /> */}
     </div>
