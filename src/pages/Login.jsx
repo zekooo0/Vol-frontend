@@ -10,7 +10,10 @@ import Spinner from "../components/Spinner";
 import RoleRadio from "../components/RoleRadio";
 import { useSearchParams } from "react-router-dom";
 export default function Login() {
-  const [role, setRole] = useState("volunteer");
+  const query = new URLSearchParams(location.search);
+  const queryRole = query.get("role");
+
+  const [role, setRole] = useState(queryRole ? queryRole : "volunteer");
   const onSelectRole = (selectedVal) => {
     setRole(selectedVal);
   };
@@ -76,7 +79,10 @@ export default function Login() {
             <div>
               <p>
                 ليس لديك حساب؟
-                <Link to="/register" className="pr-2 text-[#00c2cd] underline">
+                <Link
+                  to={`/register?role=${role}`}
+                  className="pr-2 text-[#00c2cd] underline"
+                >
                   إنشاء حساب
                 </Link>
               </p>

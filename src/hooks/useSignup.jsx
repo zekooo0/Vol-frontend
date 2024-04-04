@@ -1,11 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import axios, { AxiosError } from 'axios';
-import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import axios, { AxiosError } from "axios";
+import { useEffect } from "react";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function useSignup(role, selectedImages, setError) {
   const navigate = useNavigate();
+
+  const query = new URLSearchParams(location.search);
+  role = query.get("role");
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -22,7 +25,7 @@ function useSignup(role, selectedImages, setError) {
       if (err instanceof AxiosError) {
         const error = err.response?.data;
         if (error) {
-          if (error.message == 'Validation server') {
+          if (error.message == "Validation server") {
             const validationErrors = error.data;
             validationErrors?.forEach((err) => {
               setError(err.path, {
@@ -30,18 +33,18 @@ function useSignup(role, selectedImages, setError) {
               });
             });
           } else {
-            setError('root', {
+            setError("root", {
               message: error.message,
             });
           }
         } else {
-          setError('root', {
+          setError("root", {
             message: err.message,
           });
         }
       } else {
-        setError('root', {
-          message: 'Something went wrong',
+        setError("root", {
+          message: "Something went wrong",
         });
       }
     }

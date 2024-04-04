@@ -11,7 +11,10 @@ import orgSignupSchema from "../shema/orgSignupSchema";
 import Spinner from "../components/Spinner";
 
 export default function Signup() {
-  const [role, setRole] = useState("volunteer");
+  const query = new URLSearchParams(location.search);
+  const queryRole = query.get("role");
+
+  const [role, setRole] = useState(queryRole ? queryRole : "volunteer");
   const onSelectRole = (selectedVal) => {
     setRole(selectedVal);
   };
