@@ -3,7 +3,7 @@ import Container from '../components/Container';
 import OpportunityItem from './OpportunityItem';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Spinner from '../components/spinner/Spinner';
+import Spinner from '../components/Spinner';
 import styles from '../styles';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;

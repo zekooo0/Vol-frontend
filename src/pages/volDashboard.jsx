@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,39 +9,39 @@ const getStatusMessage = (isAccepted, isApplied, status) => {
     return (
       <p
         style={{
-          backgroundColor: "#03943da6",
-          padding: "0.4rem",
-          fontWeight: "bold",
-          color: "white",
-          textAlign: "center",
+          backgroundColor: '#03943da6',
+          padding: '0.4rem',
+          fontWeight: 'bold',
+          color: 'white',
+          textAlign: 'center',
         }}
       >
         مقبول
       </p>
     );
-  } else if (isApplied && status === "مفتوحة") {
+  } else if (isApplied && status === 'مفتوحة') {
     return (
       <p
         style={{
-          backgroundColor: "#ffeb838f",
-          padding: "0.4rem",
-          fontWeight: "bold",
-          color: "white",
-          textAlign: "center",
+          backgroundColor: '#ffeb838f',
+          padding: '0.4rem',
+          fontWeight: 'bold',
+          color: 'white',
+          textAlign: 'center',
         }}
       >
         معلق
       </p>
     );
-  } else if (isApplied && status !== "مفتوحة") {
+  } else if (isApplied && status !== 'مفتوحة') {
     return (
       <p
         style={{
-          backgroundColor: "#ff33338f",
-          padding: "0.4rem",
-          fontWeight: "bold",
-          color: "white",
-          textAlign: "center",
+          backgroundColor: '#ff33338f',
+          padding: '0.4rem',
+          fontWeight: 'bold',
+          color: 'white',
+          textAlign: 'center',
         }}
       >
         مرفوض
@@ -52,21 +52,16 @@ const getStatusMessage = (isAccepted, isApplied, status) => {
 
 const mapOpportunity = (opp, userId) => ({
   ...opp,
-  type: opp.type === "on-site" ? "بالموقع" : "عن بعد",
-  status:
-    opp.status === "open"
-      ? "مفتوحة"
-      : opp.status === "archived"
-      ? "مؤرشفة"
-      : "مغلفة",
+  type: opp.type === 'on-site' ? 'بالموقع' : 'عن بعد',
+  status: opp.status === 'open' ? 'مفتوحة' : opp.status === 'archived' ? 'مؤرشفة' : 'مغلفة',
   isAccepted: opp.acceptedVolunteers.includes(userId),
   isApplied: opp.appliedVolunteers.includes(userId),
 });
 
-const VolDashboard = () => {
+export const VolDashboard = () => {
   const [opportunities, setOpportunities] = useState([]);
-  const userToken = Cookies.get("_auth");
-  const userId = localStorage.getItem("id");
+  const userToken = Cookies.get('_auth');
+  const userId = localStorage.getItem('id');
 
   useEffect(() => {
     const fetchOpportunities = async () => {
@@ -89,14 +84,14 @@ const VolDashboard = () => {
 
   return (
     <>
-      <section className="p-5 sm:p-5 antialiased" style={{ minHeight: "65vh" }}>
-        <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-          <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+      {/* <section className="sm:p-5 p-5 antialiased" style={{ minHeight: '65vh' }}>
+        <div className="lg:px-12 max-w-screen-xl px-4 mx-auto">
+          <div className="dark:bg-gray-800 sm:rounded-lg relative overflow-hidden bg-white shadow-md">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <table className="dark:text-gray-400 w-full text-sm text-left text-gray-500">
                 <thead
-                  className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-                  style={{ textAlign: "right" }}
+                  className="bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-xs text-gray-700 uppercase"
+                  style={{ textAlign: 'right' }}
                 >
                   <tr>
                     <th scope="col" className="px-4 py-4">
@@ -113,12 +108,12 @@ const VolDashboard = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody style={{ textAlign: "right" }}>
+                <tbody style={{ textAlign: 'right' }}>
                   {opportunities.map((opp) => (
-                    <tr className="border-b dark:border-gray-700" key={opp._id}>
+                    <tr className="dark:border-gray-700 border-b" key={opp._id}>
                       <th
                         scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="whitespace-nowrap dark:text-white px-4 py-3 font-medium text-gray-900"
                       >
                         <a href={`/opportunities/${opp._id}`}>{opp.title}</a>
                       </th>
@@ -138,9 +133,7 @@ const VolDashboard = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
-
-export default VolDashboard;

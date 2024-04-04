@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import useLogin from "../hooks/useLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema from "../shema/loginSchema";
-import Spinner from "../components/spinner/Spinner";
+import Spinner from "../components/Spinner";
 import RoleRadio from "../components/RoleRadio";
 import { useSearchParams } from "react-router-dom";
 export default function Login() {

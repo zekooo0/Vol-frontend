@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import SwiperCore from "swiper";
-import "swiper/css/bundle";
-import { Link } from "react-router-dom";
-import Spinner from "./spinner/Spinner";
-import styles from "../styles";
-import OpprType from "../components/OpprType";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import SwiperCore from 'swiper';
+import 'swiper/css/bundle';
+import { Link } from 'react-router-dom';
+import Spinner from './Spinner';
+import styles from '../styles';
+import OpprType from '../components/OpprType';
 
 SwiperCore.use([Autoplay]);
 
@@ -22,7 +22,6 @@ const OpportunitiesSlider = () => {
     const fetchData = async () => {
       const result = await axios.get(`${BASE_URL}/opportunities`);
       setData(result.data.data);
-      console.log(result.data.data);
       setLoading(false);
     };
     fetchData();
@@ -57,22 +56,16 @@ const OpportunitiesSlider = () => {
                 <SwiperSlide key={_id}>
                   <div className="flex items-center gap-5">
                     <div
-                      className={`${
-                        photo ? "md:w-1/3" : "md:w-1/2"
-                      } flex flex-col items-center`}
+                      className={`${photo ? 'md:w-1/3' : 'md:w-1/2'} flex flex-col items-center`}
                     >
                       <h1 className="pb-2 text-xl font-medium">{title}</h1>
-                      <p>{desc}</p>{" "}
+                      <p>{desc}</p>{' '}
                       <button className="rounded-xl md:hidden text-white hover:bg-[#003478] mt-5 py-3 w-3/4 text-lg font-semibold bg-[#00c2cd]">
                         <Link to={`/opportunities/${_id}`}>التفاصيل ...</Link>
                       </button>
                     </div>
                     <div className="h-72 w-[1px] bg-gray-300 hidden md:block"></div>
-                    <div
-                      className={`md:block hidden ${
-                        photo ? "md:w-1/3" : "md:w-1/2"
-                      } text-lg`}
-                    >
+                    <div className={`md:block hidden ${photo ? 'md:w-1/3' : 'md:w-1/2'} text-lg`}>
                       {/* <p>{`الموقع: ${
                         !country && !city ? "Online" : `${country}, ${city}`
                       }`}</p> */}
@@ -116,11 +109,7 @@ const OpportunitiesSlider = () => {
           </Swiper>
         </div>
       ) : (
-        <Spinner
-          color={"#00c2cd"}
-          size={20}
-          apiSpinner={styles.homeApiSpinner}
-        />
+        <Spinner color={'#00c2cd'} size={20} apiSpinner={styles.homeApiSpinner} />
       )}
     </>
   );
