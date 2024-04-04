@@ -21,7 +21,10 @@ const OpportunityItem = ({ opportunity }) => {
   const { handleVolApply } = useVolApply();
 
   return (
-    <div className="md:flex-row flex flex-col max-w-4xl p-6 my-10 overflow-hidden bg-white rounded-lg shadow-md">
+    <div
+      style={{ minWidth: "890px" }}
+      className="md:flex-row flex flex-col max-w-4xl p-6 my-10 overflow-hidden bg-white rounded-lg shadow-md"
+    >
       {photo && (
         <div className="md:hidden flex items-center justify-center mb-5">
           <img
