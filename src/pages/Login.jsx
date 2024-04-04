@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import Image from '../assets/register-img.jpg';
-import Container from '../components/Container';
-import useLogin from '../hooks/useLogin';
-import { zodResolver } from '@hookform/resolvers/zod';
-import loginSchema from '../shema/loginSchema';
-import Spinner from '../components/spinner/Spinner';
-import RoleRadio from '../components/RoleRadio';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import Image from "../assets/register-img.jpg";
+import Container from "../components/Container";
+import useLogin from "../hooks/useLogin";
+import { zodResolver } from "@hookform/resolvers/zod";
+import loginSchema from "../shema/loginSchema";
+import Spinner from "../components/spinner/Spinner";
+import RoleRadio from "../components/RoleRadio";
+import { useSearchParams } from "react-router-dom";
 export default function Login() {
-  const [role, setRole] = useState('volunteer');
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    setSearchParams({ role });
-  }, [role]);
-
+  const [role, setRole] = useState("volunteer");
   const onSelectRole = (selectedVal) => {
     setRole(selectedVal);
   };
@@ -45,30 +39,39 @@ export default function Login() {
               <input
                 type="email"
                 placeholder="example@example.com"
-                {...register('email')}
+                {...register("email")}
                 id="email"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
-              {errors.email && <div className="text-red-500">{errors.email.message}</div>}
+              {errors.email && (
+                <div className="text-red-500">{errors.email.message}</div>
+              )}
             </div>
 
             <div className=" flex flex-col w-full space-y-1">
               <div className="flex items-center justify-between">
                 <label htmlFor="password">كلمة المرور</label>
-                <Link to={`/forgot-password?role=${role}`} className="text-[#00c2cd] underline">
+                <Link
+                  to={`/forgot-password?role=${role}`}
+                  className="text-[#00c2cd] underline"
+                >
                   هل نسيت كلمة السر؟
                 </Link>
               </div>
               <input
                 type="password"
-                {...register('password')}
+                {...register("password")}
                 id="password"
                 className="rounded-xl focus:border-indigo-950 p-2 border border-gray-800 outline-none"
               />
-              {errors.password && <div className="text-red-500">{errors.password.message}</div>}
+              {errors.password && (
+                <div className="text-red-500">{errors.password.message}</div>
+              )}
             </div>
 
-            {errors.root && <div className="text-red-500">{errors.root.message}</div>}
+            {errors.root && (
+              <div className="text-red-500">{errors.root.message}</div>
+            )}
 
             <div>
               <p>
@@ -86,13 +89,17 @@ export default function Login() {
               className="rounded-3xl text-white hover:bg-[#003478]  w-full py-3 text-lg font-semibold bg-[#00c2cd]"
               disabled={isSubmitting}
             >
-              {isSubmitting ? <Spinner color={'#fff'} /> : 'تسجيل دخول'}
+              {isSubmitting ? <Spinner color={"#fff"} /> : "تسجيل دخول"}
             </button>
           </form>
         </div>
 
         <div className="lg:flex items-center justify-center hidden  rounded-lg overflow-hidden flex-1  max-h-[637px] ">
-          <img src={Image} alt="volunteeres image" className=" w-min h-auto rounded-lg" />
+          <img
+            src={Image}
+            alt="volunteeres image"
+            className=" w-min h-auto rounded-lg"
+          />
         </div>
       </div>
     </Container>
